@@ -10,6 +10,15 @@ The `pykored` module is a Python-based tool for downloading video from [yako red
 - Merge video segments into a single MP4 file.
 - Supports custom output directories.
 
+## Local Installation
+```bash
+pip install .
+```
+Download Videos
+```bash
+pykored <video_url> [output_directory]
+```
+
 ## Installation
 
 1. Clone this repository:

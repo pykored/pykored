@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 from pykored.downloader import VideoDownloader
 
@@ -8,7 +9,7 @@ class VideoManager:
         self.downloader = VideoDownloader(output_dir='./video_segments')
 
     async def download_video(self, segment_urls, title):
-        output_filename = f'{title}.mp4'
+        output_filename = re.sub(r'[:*?"<>|/\\]', '_', f'{title}.mp4')
         await self.downloader.download_segments_with_asyncio(segment_urls)
         self.downloader.merge_ts_files(output_filename)
         output_mp4_path = os.path.join(self.output_mp4_dir, output_filename)

@@ -1,58 +1,63 @@
 # Pykored
 
-## Overview
-The `pykored` module is a Python-based tool for downloading video from [yako red](https://yakored1.net).
+## 개요
+- `pykored` 모듈은 [yako red](https://yakored1.net)에서 비디오를 다운로드하는 Python 기반 도구입니다.
+- [다운로드](https://github.com/user-attachments/files/18134933/pykored.zip) 받고 나서 바로 cmd에서 사용해도 됩니다!
+- cmd 사용예시
+```bash
+pykored https://yakored1.net/top/all/video/999999-example-page
+```
+### 기능:
+### 야코 레드 영상을 다운로드합니다.
+- 웹페이지에서 비디오 ID와 제목 추출.
+- M3U8 플레이리스트를 가져오고 세그먼트 URL을 파싱.
+- 비디오 세그먼트를 비동기적으로 다운로드.
+- 비디오 세그먼트를 하나의 MP4 파일로 병합.
+- 사용자 정의 출력 디렉토리 지원.
 
-### Features:
-- Extract video ID and title from a webpage.
-- Fetch M3U8 playlist and parse segment URLs.
-- Download video segments asynchronously.
-- Merge video segments into a single MP4 file.
-- Supports custom output directories.
-
-## Local Installation
+## 로컬로 사용하기
 ```bash
 pip install .
 ```
-Download Videos
+아래와 같이 cmd에서 직접 사용 가능하다!
 ```bash
 pykored <video_url> [output_directory]
 ```
 
-## Installation
+## 설치 방법
 
-1. Clone this repository:
+1. 리포지토리 클론하기:
     ```bash
     git clone <repository_url>
     cd pykored
     ```
 
-2. Install dependencies:
+2. 의존성 설치:
     ```bash
     pip install -r requirements.txt
     ```
 
-## Usage
+## 사용 방법
 
-The module provides a main class `Yako` for downloading videos.
+이 모듈은 비디오 다운로드를 위한 `Yako` 클래스를 제공합니다.
 
-### Example
+### 예시
 
 ```python
 from pykored import Yako
 
-# Initialize Yako with the video URL
+# 비디오 URL로 Yako 초기화
 url = "https://yakored1.net/top/all/video/999999-example-page"
 yako = Yako(url)
 
-# Download the video to the default './downloads' directory
+# 기본 './downloads' 디렉토리에 비디오 다운로드
 yako.download()
 
-# Download the video to a custom directory
+# 사용자 정의 디렉토리에 비디오 다운로드
 yako.download(output_dir='./custom_directory')
 ```
 
-## File Structure
+## 파일 구조
 
 ```
 pykored/
@@ -66,48 +71,46 @@ pykored/
 └── requirements.txt
 ```
 
-## How It Works
+## 작동 원리
 
-1. **Initialization**: The `Yako` class is initialized with a video URL.
-2. **Fetching Video Information**: Extracts the video ID and title from the provided URL.
-3. **Fetching M3U8 Content**: Retrieves the M3U8 playlist file associated with the video.
-4. **Segment Download**: Downloads all the video segments listed in the M3U8 file asynchronously.
-5. **Segment Merge**: Combines the downloaded segments into a single MP4 file.
+1. **초기화**: `Yako` 클래스는 비디오 URL로 초기화됩니다.
+2. **비디오 정보 가져오기**: 제공된 URL에서 비디오 ID와 제목을 추출합니다.
+3. **M3U8 콘텐츠 가져오기**: 비디오와 연결된 M3U8 플레이리스트 파일을 가져옵니다.
+4. **세그먼트 다운로드**: M3U8 파일에 나열된 모든 비디오 세그먼트를 비동기적으로 다운로드합니다.
+5. **세그먼트 병합**: 다운로드된 세그먼트를 하나의 MP4 파일로 병합합니다.
 
-## Dependencies
+## 의존성
 
-- Python 3.8+
+- Python 3.8 이상
 - aiohttp
 - beautifulsoup4
 
-Install the dependencies using:
+의존성을 설치하려면:
 ```bash
 pip install -r requirements.txt
 ```
+## 참고 사항
 
-## Notes
+- 제공된 비디오 URL이 도구의 추출 로직과 호환되는지 확인하세요.
+- 출력 디렉토리가 존재하지 않으면 자동으로 생성됩니다.
 
-- Ensure the provided video URL is compatible with the tool’s extraction logic.
-- The output directory will be created automatically if it does not exist.
+## 라이선스
 
-## License
+이 프로젝트는 MIT 라이선스 하에 라이센스가 부여됩니다. 자세한 내용은 `LICENSE` 파일을 참고하세요.
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+## 기여 방법
 
-## Contributing
-
-1. Fork the repository.
-2. Create a feature branch:
+1. 리포지토리를 포크(fork)하세요.
+2. 기능 추가를 위한 브랜치를 만드세요:
     ```bash
     git checkout -b feature-name
     ```
-3. Commit your changes:
+3. 변경 사항을 커밋하세요:
     ```bash
-    git commit -m "Description of changes"
+    git commit -m "변경 사항 설명"
     ```
-4. Push to the branch:
+4. 브랜치에 푸시하세요:
     ```bash
     git push origin feature-name
     ```
-5. Open a pull request.
-
+5. 새로운 Pull Request를 생성하세요.

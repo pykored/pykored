@@ -1,0 +1,27 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment files
+.env
+*.env
+
+# Downloads directory
+downloads/
+
+# Byte-compiled files
+*.pyc
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv/
+*.egg-info/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp

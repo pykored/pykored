@@ -38,6 +38,8 @@ class Yako:
 
         title = await self.title
         video_id = await self.video_id
+
+        print(title)
         
         m3u8_content = await M3U8Handler(VideoDownloader).get_m3u8_content(video_id)
         if not m3u8_content:
@@ -66,3 +68,4 @@ def main():
     
     yako = Yako(url)
     yako.download(output_dir)
+    print('Download Completed')

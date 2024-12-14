@@ -11,6 +11,15 @@
 - 비디오 세그먼트를 하나의 MP4 파일로 병합.
 - 사용자 정의 출력 디렉토리 지원.
 
+## 로컬로 사용하기
+```bash
+pip install .
+```
+아래와 같이 cmd에서 직접 사용 가능하다!
+```bash
+pykored <video_url> [output_directory]
+```
+
 ## 설치 방법
 
 1. 리포지토리 클론하기:

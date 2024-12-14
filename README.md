@@ -30,10 +30,10 @@ The module provides a main class `Yako` for downloading videos.
 ### Example
 
 ```python
-from video_downloader import Yako
+from pykored import Yako
 
 # Initialize Yako with the video URL
-url = "https://example.com/video-page"
+url = "https://yakored1.net/top/all/video/999999-example-page"
 yako = Yako(url)
 
 # Download the video to the default './downloads' directory
@@ -46,7 +46,7 @@ yako.download(output_dir='./custom_directory')
 ## File Structure
 
 ```
-video_downloader/
+pykored/
 ├── __init__.py        
 ├── __main__.py          
 ├── downloader.py       

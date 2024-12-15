@@ -128,3 +128,5 @@ pip install -r requirements.txt
     git push origin feature-name
     ```
 5. 새로운 Pull Request를 생성하세요.
+
+google-site-verification: google1a05fb0f49f1c3e2.html

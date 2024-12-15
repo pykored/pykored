@@ -1,5 +1,7 @@
+import sys
 import os
 import asyncio
+import argparse
 import pykored.utils as utils
 from pykored.downloader import VideoDownloader
 from pykored.m3u8_handler import M3U8Handler
@@ -14,33 +16,30 @@ class Yako:
 
     async def __extract(self):
         self._video_id, self._title = await utils.extract_video_id(self.url)
-        return None
 
     @property
     async def title(self):
         if not self._title:
             await self.__extract()
-
         return self._title
-    
+
     @property
     async def video_id(self):
         if not self._video_id:
             await self.__extract()
-
         return self._video_id
-    
+
     async def __download_async(self, output_dir='./downloads'):
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
-        
+
         await self.__extract()
 
         title = await self.title
         video_id = await self.video_id
 
-        print(title)
-        
+        print(f"Downloading video: {title} (ID: {video_id})")
+
         m3u8_content = await M3U8Handler(VideoDownloader).get_m3u8_content(video_id)
         if not m3u8_content:
             print('Failed to fetch M3U8 content.')
@@ -53,19 +52,46 @@ class Yako:
 
         video_manager = VideoManager(output_dir)
         await video_manager.download_video(segment_urls, title)
+        print(f"Download complete! Video saved in: {output_dir}")
 
     def download(self, output_dir='./downloads'):
         asyncio.run(self.__download_async(output_dir))
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: pykored <URL>")
-        sys.exit(1)
+    while True:
+        print("====== Yako Red Video Downloader ======")
+        print("1. Download a video")
+        print("2. Exit")
+        choice = input("Enter your choice (1 or 2): ").strip()
 
-    url = sys.argv[1]
-    output_dir = sys.argv[2] if len(sys.argv) > 2 else './downloads'
-    
-    yako = Yako(url)
-    yako.download(output_dir)
-    print('Download Completed')
+        if choice == "2":
+            sys.exit(0)
+
+        elif choice == "1":
+            url = input("Enter the video URL: ").strip()
+            output_dir = input("Enter output directory (press Enter for './downloads'): ").strip()
+            if not output_dir:
+                output_dir = './downloads'
+
+            yako = Yako(url)
+            yako.download(output_dir=output_dir)
+
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        parser = argparse.ArgumentParser(description="Pykored Video Downloader")
+        parser.add_argument("url", help="The URL of the video to download")
+        parser.add_argument(
+            "--output",
+            default="./downloads",
+            help="The directory to save the downloaded video (default: ./downloads)",
+        )
+        args = parser.parse_args()
+
+        yako = Yako(args.url)
+        yako.download(output_dir=args.output)
+    else:
+        main()

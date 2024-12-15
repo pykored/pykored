@@ -2,7 +2,7 @@
 
 ## 개요
 - `pykored` 모듈은 [yako red](https://yakored1.net)에서 비디오를 다운로드하는 Python 기반 도구입니다.
-- [클릭해서 다운로드](https://github.com/user-attachments/files/18139474/pykored.zip)
+- [클릭해서 다운로드](https://github.com/user-attachments/files/18140575/pykored.zip)
 - pykored.exe를 실행하거나 bash에서 사용 가능합니다.
 - bash 사용예시
 ```bash

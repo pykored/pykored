@@ -33,7 +33,7 @@ pip install .
 ```
 아래와 같이 cmd에서 직접 사용 가능하다!
 ```bash
-pykored <video_url> [output_directory]
+pykored
 ```
 
 ## 설치 방법

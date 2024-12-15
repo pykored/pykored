@@ -4,10 +4,12 @@ import shutil
 from tqdm import tqdm 
 from pykored.downloader import VideoDownloader
 
+path = os.path.join(os.getenv('USERPROFILE'), 'video_segments')
+
 class VideoManager:
     def __init__(self, output_mp4_dir):
         self.output_mp4_dir = output_mp4_dir
-        self.downloader = VideoDownloader(output_dir='./video_segments')
+        self.downloader = VideoDownloader(output_dir=path)
 
     async def download_video(self, segment_urls, title):
         output_filename = re.sub(r'[:*?"<>|/\\]', '_', f'{title}.mp4')

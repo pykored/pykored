@@ -96,6 +96,7 @@ pykored/
 - Python 3.8 이상
 - aiohttp
 - beautifulsoup4
+- tqdm
 
 의존성을 설치하려면:
 ```bash

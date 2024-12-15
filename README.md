@@ -57,16 +57,17 @@ pykored
 
 ```python
 from pykored import Yako
+import asyncio
 
 # 비디오 URL로 Yako 초기화
 url = "https://yakored1.net/top/all/video/999999-example-page"
 yako = Yako(url)
 
 # 기본 './downloads' 디렉토리에 비디오 다운로드
-yako.download()
+asyncio.run(yako.download())
 
 # 사용자 정의 디렉토리에 비디오 다운로드
-yako.download(output_dir='./custom_directory')
+asyncio.run(yako.download(output_dir='./custom_directory'))
 ```
 
 ## 파일 구조
